@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from 'axios';
 
 import UploadFile from "../../uploadFile/uploadFile";
 
@@ -12,19 +11,19 @@ export default function Home() {
     const handleUpload = (file) => {
         setVideoFile(file);
 
-        const formData = new FormData();
-        formData.append('video', file);
+        // const formData = new FormData();
+        // formData.append('video', file);
 
-        axios.post('http://localhost:5000/upload', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then(response => {
-            console.log('Video uploaded successfully:', response.data);
-            // Handle the response or trigger FFmpeg processing here
-        }).catch(error => {
-            console.error('Error uploading video:', error);
-        });
+        // axios.post('http://localhost:5000/upload', formData, {
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     }
+        // }).then(response => {
+        //     console.log('Video uploaded successfully:', response.data);
+        //     // Handle the response or trigger FFmpeg processing here
+        // }).catch(error => {
+        //     console.error('Error uploading video:', error);
+        // });
     };
 
     return (

@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import axios from 'axios';
+
+import './uploadFile.css';
 
 function UploadFile({ onUpload }) {
 
@@ -14,9 +17,6 @@ function UploadFile({ onUpload }) {
         const videoURL = URL.createObjectURL(file);
         setVideoSrc(videoURL); // Set the video URL in the state
 
-        console.log("Im in the onDrop func", acceptedFiles[0]);
-
-
     }, [onUpload]);
 
     const { getRootProps, getInputProps } = useDropzone({
@@ -24,6 +24,28 @@ function UploadFile({ onUpload }) {
         multiple: false,
         onDrop,
     });
+
+    const handleAddVideo = async () => {
+        try {
+            const formData = new FormData();
+            formData.append('video', file); // Assuming `file` is the video file selected
+            console.log("Im in the onDrop func");
+
+            const response = await axios.post('http://localhost:5000/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            if (response.status === 200) {
+                console.log('Video uploaded successfully:', response.data.message);
+            } else {
+                console.error('Failed to upload video:', response.data.message);
+            }
+        } catch (error) {
+            console.error('Error during upload:', error);
+        }
+    };
 
     return (
         <div>
@@ -41,6 +63,7 @@ function UploadFile({ onUpload }) {
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
+                    <button className='add_button' onClick={handleAddVideo}>Add</button>
                 </div>
             )}
         </div>
