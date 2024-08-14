@@ -1,11 +1,14 @@
 .navbar {
   padding: 0;
+  position: fixed;
   /* margin: auto; */
   display: flex;
 
   width: fit-content;
   height: 100vh;
-  /* box-sizing: border-box; */
+  
+  
+  z-index: 1;
 }
 
 

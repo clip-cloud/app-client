@@ -1,6 +1,26 @@
 .home_page {
-    position: absolute;
-    top:  30%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+
+    margin: auto;
+    margin-top: 10vh;
+    display: grid;
+
+    width: fit-content;
+}
+
+.home_page_body {
+    display: grid;
+    text-align: left;
+}
+
+/* .drop_zone {
+    cursor: pointer;
+} */
+
+
+@media (max-width: 767px) {
+    .home_page {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
 }
