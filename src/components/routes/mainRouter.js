@@ -11,7 +11,7 @@ function MainRouter() {
 
         <Routes>
             <Route path='/' element={<Home />} />                   {/* Home route */}
-            <Route path='/gallery' element={<Gallery />} />                   {/* Home route */}
+            <Route path='/gallery' element={<Gallery />} />         {/* Gallery route */}
         </Routes>
     )
 }
