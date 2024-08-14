@@ -1,0 +1,47 @@
+.navbar {
+  padding: 0;
+  /* margin: auto; */
+  display: flex;
+
+  width: fit-content;
+  height: 100vh;
+  /* box-sizing: border-box; */
+}
+
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar li a {
+  text-decoration: none;
+}
+
+.navbar li {
+  padding: 1vh 1vw;
+  cursor: pointer;
+  transition: border-bottom 0.3s;
+  position: relative;
+}
+
+.navbar li.select {
+  border-bottom: 7px solid #D04848;
+}
+
+.navbar li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 7px;
+  background-color: #FDE767;
+  transition: width 0.3s ease;
+  /* Adjust duration and easing as needed */
+}
+
+.navbar li:hover::before {
+  width: 100%;
+}
