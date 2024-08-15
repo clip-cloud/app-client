@@ -39,6 +39,7 @@ function UploadFile({ onUpload }) {
 
             if (response.status === 200) {
                 console.log('Video uploaded successfully:', response.data.message);
+                setVideoSrc(null);
             } else {
                 console.error('Failed to upload video:', response.data.message);
             }
@@ -57,13 +58,13 @@ function UploadFile({ onUpload }) {
                 </div>}
 
             {videoSrc && (
-                <div style={{ marginTop: '20px' }}>
-                    <h3>Uploaded Video: {file.path} </h3>
+                <div className="video-container">
+                    <h3>Uploaded Video: {file.path}</h3>
                     <video controls width="300">
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
-                    <button className='add_button' onClick={handleAddVideo}>Add</button>
+                    <button className="add_button" onClick={handleAddVideo}>Add</button>
                 </div>
             )}
         </div>
