@@ -9,6 +9,8 @@ function UploadFile({ onUpload }) {
     const [videoSrc, setVideoSrc] = useState(null);
     const [file, setFile] = useState(null);
 
+    const SERVER_PORT = process.env.REACT_APP_SERVICE_PORT;
+
     const onDrop = useCallback((acceptedFiles) => {
         onUpload(acceptedFiles[0]);
         setFile(acceptedFiles[0])
@@ -16,6 +18,8 @@ function UploadFile({ onUpload }) {
 
         const videoURL = URL.createObjectURL(file);
         setVideoSrc(videoURL); // Set the video URL in the state
+
+        console.log(videoURL)
 
     }, [onUpload]);
 
@@ -27,11 +31,11 @@ function UploadFile({ onUpload }) {
 
     const handleAddVideo = async () => {
         try {
+
             const formData = new FormData();
             formData.append('video', file); // Assuming `file` is the video file selected
-            console.log("Im in the onDrop func");
 
-            const response = await axios.post('http://localhost:5000/upload', formData, {
+            const response = await axios.post(`http://localhost:${SERVER_PORT}/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -48,6 +52,11 @@ function UploadFile({ onUpload }) {
         }
     };
 
+    const handleMetaData = (e) => {
+        const duration = e.target.duration;
+        console.log("Duration:", duration)
+    }
+
     return (
         <div>
             {!videoSrc &&
@@ -60,7 +69,7 @@ function UploadFile({ onUpload }) {
             {videoSrc && (
                 <div className="video-container">
                     <h3>Uploaded Video: {file.path}</h3>
-                    <video controls width="300">
+                    <video onLoadedMetadata={handleMetaData} controls width="300">
                         <source src={videoSrc} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>

@@ -1,6 +1,36 @@
 .gallery_header {
-    position: absolute;
-    top:  50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    display: grid;
+
+    /* margin: 10vh;
+    width: fit-content; */
+}
+
+.gallery_header span{
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.video_list {
+    position: relative;
+    display: flex;
+
+    margin-left: 8vw;
+    margin-top: 5vh;
+    flex-wrap: wrap;
+
+    gap: 1px;
+}
+
+.video_container {
+    padding: 1px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.2);
 }
