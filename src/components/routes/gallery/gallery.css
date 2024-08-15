@@ -2,11 +2,11 @@
     position: relative;
     display: grid;
 
-    /* margin: 10vh;
-    width: fit-content; */
+    /* /* margin: 10vh; */
+    /* width: fit-content; */
 }
 
-.gallery_header span{
+.gallery_title {
     position: relative;
     margin: auto;
     display: flex;
@@ -29,8 +29,16 @@
 }
 
 .video_container {
-    padding: 1px;
+    /* padding: 1px; */
     margin: 10px;
-    border-radius: 8px;
-    box-shadow: 2px 6px 10px rgba(0, 0, 0, 0.2);
+    /* border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); */
+
+    /* height: 100%; */
+}
+
+.responsive-video {
+    width: 200px;
+    border-radius: 20px;
+
 }
