@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
 import './gallery.css';
 
 export default function Gallery() {
     const [fetchVideos, setFetchVideos] = useState([]);
+    const navigate = useNavigate();
 
     const SERVER_PORT = process.env.REACT_APP_SERVICE_PORT;
 
@@ -52,6 +55,11 @@ export default function Gallery() {
         }
     };
 
+    const handleVideoClick = (index) => {
+        const videoToShow = fetchVideos[index];
+        navigate('/video/' + videoToShow._id);
+    }
+
     return (
         <div className="gallery_header">
             <span className="gallery_title" > Video Gallery!</span>
@@ -65,7 +73,8 @@ export default function Gallery() {
                                 <source src={`http://localhost:${SERVER_PORT}${video.filePath}`} type={video.format} />
                                 Your browser does not support the video tag.
                             </video>
-                            <button onClick={() => handleRemoveVideo(index)} className="video-button">X</button>
+                            <button onClick={() => handleRemoveVideo(index)} className="video_button">X</button>
+                            <button onClick={() => handleVideoClick(index)} className="profile_button">Profile</button>
                         </div>
                     ))
                 ) : (
