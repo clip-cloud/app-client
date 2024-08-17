@@ -1,0 +1,127 @@
+.upload_file {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-container {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.custom-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: fit-content;
+    background: rgba(0, 0, 0, 0.6); /* Slightly more transparent for better blur effect */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px); /* Adds a blur effect */
+    border-radius: 10px; /* Rounded corners for the controls */
+}
+
+.custom-controls input[type="range"] {
+    flex: 1;
+    margin: 0 10px;
+    background: rgba(255, 255, 255, 0.2); /* Light background for the slider track */
+    height: 6px;
+    border-radius: 3px;
+}
+
+.custom-controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.custom-controls input[type="range"]::-moz-range-thumb {
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.custom-controls .time {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.video-container video {
+    width: fit-content;
+    border-radius: 20px;
+    box-shadow: 2px 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.vidoe_data_edit {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 2vw;
+}
+
+.trimmer-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add_button:hover {
+    background-color: #45a049;
+}
+
+.description_container {
+    display: grid;
+}
+
+.description_label {
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.mandatory {
+    color: red;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+.description_input {
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    height: 30vh;
+    transition: border-color 0.3s ease;
+}
+
+.description_input:focus {
+    border-color: #007BFF;
+}
+
+.add_button {
+    height: fit-content;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

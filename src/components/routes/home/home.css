@@ -1,0 +1,28 @@
+.home_page {
+    position: relative;
+
+    /* margin: auto; */
+    margin-top: 10vh;
+    margin-left: 50vh;
+    display: grid;
+    grid-row: auto;
+
+    /* width: fit-content; */
+}
+
+.home_page_body {
+    display: grid;
+    text-align: left;
+}
+
+/* .drop_zone {
+    cursor: pointer;
+} */
+
+
+/* @media (max-width: 767px) {
+    .home_page {
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+} */

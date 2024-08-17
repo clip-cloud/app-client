@@ -1,0 +1,52 @@
+.video_profile {
+    margin-top: 5vh;
+    position: relative;
+    margin-left: 50vh;
+
+    display: flex;
+    flex-direction: column;
+    float: left;
+
+    left: 0vh;
+
+    height: 10vh;
+}
+
+.video_profile_container {
+    position: relative;
+    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background for the blur effect */
+
+
+    border-radius: 25px;
+    border: 5px solid black;
+
+    /* Apply blur effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.video_info {
+    display: grid;
+    float: left;
+}
+
+.video_title_profile {
+    color: #fff;
+    /* White text for better contrast */
+
+}
+
+.responsive-video-profile {
+    position: relative;
+    float: left;
+
+    width: fit-content;
+    height: 50vh;
+    border-radius: 20px;
+}
+
+.back_togallery {
+    position: relative;
+    float: left;
+}
