@@ -57,11 +57,14 @@ function UploadFile({ onUpload }) {
             formData.append('endTime', trimRange[1]);
             formData.append('description', textInput);
 
-            const response = await axios.post(`http://localhost:${SERVER_PORT}/upload`, formData, {
+
+            const response = await axios.post(`${SERVER_PORT}upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
+
+            console.log("HERE THE ISSUE!!")
 
             if (response.status === 200) {
                 console.log('Video uploaded successfully:', response.data.message);
