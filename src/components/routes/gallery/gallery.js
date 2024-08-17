@@ -12,7 +12,7 @@ export default function Gallery() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:${SERVER_PORT}/request/videos`);
+                const response = await fetch(`${SERVER_PORT}/request/videos`);
                 const data = await response.json();
                 setFetchVideos(data);
                 console.log(data);
