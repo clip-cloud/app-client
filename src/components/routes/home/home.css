@@ -1,11 +1,13 @@
 .home_page {
     position: relative;
 
-    margin: auto;
+    /* margin: auto; */
     margin-top: 10vh;
+    margin-left: 50vh;
     display: grid;
+    grid-row: auto;
 
-    width: fit-content;
+    /* width: fit-content; */
 }
 
 .home_page_body {
@@ -18,9 +20,9 @@
 } */
 
 
-@media (max-width: 767px) {
+/* @media (max-width: 767px) {
     .home_page {
         padding-left: 5em;
         padding-right: 5em;
     }
-}
+} */

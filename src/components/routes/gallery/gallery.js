@@ -34,7 +34,7 @@ export default function Gallery() {
         // console.log(" fetchVideos[index]: ", fetchVideos[index]);
 
         try {
-            const response = await fetch(`http://localhost:${SERVER_PORT}/request/videos/${videoToRemove._id}`, {
+            const response = await fetch(`http://localhost:${SERVER_PORT}/request/video/${videoToRemove._id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

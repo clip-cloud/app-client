@@ -1,50 +1,68 @@
+/* General navbar style */
 .navbar {
   padding: 0;
   position: fixed;
-  /* margin: auto; */
   display: flex;
-
-  width: fit-content;
+  flex-direction: column; /* Change this if you want the navbar items to be in a row */
+  width: 250px; /* Adjust width as needed */
   height: 100vh;
-  
-  
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the blur effect */
+  backdrop-filter: blur(15px); /* Apply blur effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better separation */
+  border-radius: 10px; /* Optional rounded corners */
   z-index: 1;
 }
 
-
+/* Navbar list style */
 .navbar ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Navbar link style */
 .navbar li a {
   text-decoration: none;
+  color: #fff; /* White text for better contrast */
+  font-size: 18px; /* Adjust font size as needed */
+  display: block;
+  padding: 15px 20px; /* Added horizontal padding for a better touch target */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth color and background transition on hover */
+  border-radius: 8px; /* Rounded corners for better appearance */
 }
 
+/* Navbar item style */
 .navbar li {
-  padding: 1vh 1vw;
   cursor: pointer;
-  transition: border-bottom 0.3s;
   position: relative;
 }
 
-.navbar li.select {
-  border-bottom: 7px solid #D04848;
+/* Selected item style */
+.navbar li.select a {
+  background: linear-gradient(135deg, #D04848, #F96C6C); /* Gradient background for the selected item */
+  color: #fff; /* White text for contrast */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
+/* Hover effect for navbar items */
+.navbar li:hover a {
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly darkened background on hover */
+  color: #FDE767; /* Highlight color for text */
+}
+
+/* Before pseudo-element for hover effect */
 .navbar li::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   width: 0;
-  height: 7px;
-  background-color: #FDE767;
+  height: 5px; /* Slightly reduced height for a subtler effect */
+  background-color: #FDE767; /* Highlight color */
   transition: width 0.3s ease;
-  /* Adjust duration and easing as needed */
 }
 
+/* Expanded hover effect */
 .navbar li:hover::before {
   width: 100%;
 }

@@ -6,7 +6,6 @@ import Gallery from "./gallery/gallery";
 import VideoProfile from "./profile/videoProfile";
 
 
-
 function MainRouter() {
     return (
 
