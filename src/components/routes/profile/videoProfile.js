@@ -15,7 +15,7 @@ function VideoProfile() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:${SERVER_PORT}/request/single/video/${id}`);
+                const response = await fetch(`${SERVER_PORT}/request/single/video/${id}`);
                 const data = await response.json();
                 setVideoData(data);
                 console.log(data);
@@ -40,7 +40,7 @@ function VideoProfile() {
                 <div className='video_profile_container'>
 
                     <video controls className="responsive-video-profile" >
-                        <source src={`http://localhost:${SERVER_PORT}${getVideoData.filePath}`} type={getVideoData.format} />
+                        <source src={`${SERVER_PORT}${getVideoData.filePath}`} type={getVideoData.format} />
                         Your browser does not support the video tag.
                     </video>
 

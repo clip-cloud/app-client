@@ -34,7 +34,7 @@ export default function Gallery() {
         // console.log(" fetchVideos[index]: ", fetchVideos[index]);
 
         try {
-            const response = await fetch(`http://localhost:${SERVER_PORT}/request/video/${videoToRemove._id}`, {
+            const response = await fetch(`${SERVER_PORT}/request/video/${videoToRemove._id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ export default function Gallery() {
                             {/* <h4>{video.title}</h4> */}
                             {console.log("video._id: ", video._id)}
                             <video controls className="responsive-video " >
-                                <source src={`http://localhost:${SERVER_PORT}${video.filePath}`} type={video.format} />
+                                <source src={`${SERVER_PORT}${video.filePath}`} type={video.format} />
                                 Your browser does not support the video tag.
                             </video>
                             <button onClick={() => handleRemoveVideo(index)} className="video_button">X</button>
