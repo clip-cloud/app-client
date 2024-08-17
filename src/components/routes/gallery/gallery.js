@@ -23,8 +23,6 @@ export default function Gallery() {
 
         fetchData();
 
-        // console.log("fetchVideos: ", fetchVideos)
-
     }, [SERVER_PORT]);
 
 
