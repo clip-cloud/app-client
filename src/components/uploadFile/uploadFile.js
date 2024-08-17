@@ -13,7 +13,8 @@ function UploadFile({ onUpload }) {
     const videoRef = useRef(null);
     const rangeRef = useRef(null);
 
-    const SERVER_PORT = process.env.REACT_APP_SERVICE_PORT;
+    // Read the base URL from environment variable
+    const API_BASE_URL = process.env.REACT_APP_SERVICE_PORT;
 
     useEffect(() => {
         if (videoRef.current) {
@@ -57,14 +58,11 @@ function UploadFile({ onUpload }) {
             formData.append('endTime', trimRange[1]);
             formData.append('description', textInput);
 
-
-            const response = await axios.post(`${SERVER_PORT}upload`, formData, {
+            const response = await axios.post(`${API_BASE_URL}/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
-            console.log("HERE THE ISSUE!!")
 
             if (response.status === 200) {
                 console.log('Video uploaded successfully:', response.data.message);
