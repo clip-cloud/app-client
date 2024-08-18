@@ -1,57 +1,39 @@
 .upload_file {
     display: flex;
     flex-direction: column;
+
+}
+
+.drop_zone {
+    position: absolute;
+    border: 3px dashed #ccc;
+    cursor: pointer;
+    padding: 50px;
+    border-radius: 2%;
+
+    height: 100px;
+    width: 100%;
+
+    bottom: 0;
+}
+
+
+.file_name {
+    float: left;
+    margin-block: 30px;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.file_name {
+    font-weight: bold;
 }
 
 .video-container {
     position: relative;
     display: flex;
     width: 100%;
-}
-
-.custom-controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    min-width: fit-content;
-    background: rgba(0, 0, 0, 0.6); /* Slightly more transparent for better blur effect */
-    color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-    backdrop-filter: blur(10px); /* Adds a blur effect */
-    border-radius: 10px; /* Rounded corners for the controls */
-}
-
-.custom-controls input[type="range"] {
-    flex: 1;
-    margin: 0 10px;
-    background: rgba(255, 255, 255, 0.2); /* Light background for the slider track */
-    height: 6px;
-    border-radius: 3px;
-}
-
-.custom-controls input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background: #fff;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.custom-controls input[type="range"]::-moz-range-thumb {
-    background: #fff;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.custom-controls .time {
-    font-size: 14px;
-    margin-left: 10px;
 }
 
 .video-container video {
@@ -67,7 +49,7 @@
     margin-left: 2vw;
 }
 
-.trimmer-container {
+.trimmer_container {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
@@ -84,17 +66,21 @@
 }
 
 .description_container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
 }
 
 .description_label {
+    position: relative;
     font-size: 16px;
     margin-bottom: 8px;
     font-weight: 500;
     display: inline-block;
 }
 
-.mandatory {
+.asterix {
     color: red;
     margin-left: 4px;
     font-weight: bold;
@@ -102,16 +88,25 @@
 
 .description_input {
     padding: 10px 15px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    border: 2px solid rgba(204, 204, 204, 0.8);
+    
+    border-radius: 10px;
+    
     font-size: 16px;
     outline: none;
     height: 30vh;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(240, 240, 240, 0.7);
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+    opacity: 50%;
 }
 
 .description_input:focus {
     border-color: #007BFF;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
 }
 
 .add_button {
@@ -124,4 +119,27 @@
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.loading_spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

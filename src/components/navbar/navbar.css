@@ -1,68 +1,58 @@
-/* General navbar style */
 .navbar {
-  padding: 0;
   position: fixed;
   display: flex;
-  flex-direction: column; /* Change this if you want the navbar items to be in a row */
-  width: 250px; /* Adjust width as needed */
+  flex-direction: column;
+  width: 210px;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the blur effect */
-  backdrop-filter: blur(15px); /* Apply blur effect */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for better separation */
-  border-radius: 10px; /* Optional rounded corners */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
-/* Navbar list style */
 .navbar ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* Navbar link style */
 .navbar li a {
   text-decoration: none;
-  color: #fff; /* White text for better contrast */
-  font-size: 18px; /* Adjust font size as needed */
+  color: #fff;
+  font-size: 18px;
   display: block;
-  padding: 15px 20px; /* Added horizontal padding for a better touch target */
-  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth color and background transition on hover */
-  border-radius: 8px; /* Rounded corners for better appearance */
+  padding: 15px 20px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px;
 }
 
-/* Navbar item style */
 .navbar li {
   cursor: pointer;
   position: relative;
 }
 
-/* Selected item style */
 .navbar li.select a {
-  background: linear-gradient(135deg, #D04848, #F96C6C); /* Gradient background for the selected item */
-  color: #fff; /* White text for contrast */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  background: linear-gradient(135deg, #D04848, #F96C6C);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Hover effect for navbar items */
 .navbar li:hover a {
-  background-color: rgba(255, 255, 255, 0.2); /* Slightly darkened background on hover */
-  color: #FDE767; /* Highlight color for text */
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #FDE767;
 }
 
-/* Before pseudo-element for hover effect */
 .navbar li::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   width: 0;
-  height: 5px; /* Slightly reduced height for a subtler effect */
-  background-color: #FDE767; /* Highlight color */
+  height: 5px;
+  background-color: #FDE767;
   transition: width 0.3s ease;
 }
 
-/* Expanded hover effect */
 .navbar li:hover::before {
   width: 100%;
 }

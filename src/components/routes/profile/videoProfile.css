@@ -1,52 +1,73 @@
 .video_profile {
-    margin-top: 5vh;
-    position: relative;
-    margin-left: 50vh;
-
-    display: flex;
-    flex-direction: column;
-    float: left;
-
-    left: 0vh;
-
-    height: 10vh;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.video_profile_container {
-    position: relative;
-    backdrop-filter: blur(15px);
-    background: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background for the blur effect */
-
-
-    border-radius: 25px;
-    border: 5px solid black;
-
-    /* Apply blur effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.video_info {
-    display: grid;
-    float: left;
-}
-
-.video_title_profile {
-    color: #fff;
-    /* White text for better contrast */
-
-}
-
-.responsive-video-profile {
-    position: relative;
-    float: left;
-
-    width: fit-content;
-    height: 50vh;
-    border-radius: 20px;
+.video_profile span {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
 .back_togallery {
-    position: relative;
-    float: left;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.back_togallery:hover {
+    background-color: #0056b3;
+}
+
+.video_profile_container {
+    width: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.responsive_video_profile {
+    width: 20vw;
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Container for video information */
+.video_info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title and details */
+.video_title_profile {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.video_title_profile:nth-child(2) {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.video_title_profile:nth-child(3) {
+    font-size: 0.9em;
+    color: #666;
 }
