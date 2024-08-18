@@ -11,7 +11,7 @@ function App() {
         <div className='header'>
           <a className='sticky_header'
             href='https://github.com/clip-cloud'>
-            Welcome to Clip Cloud! Navigate to the repository. -{'>'}
+            Welcome to Clip Cloud! Navigate to repository. -{'>'}
           </a>
         </div>
 

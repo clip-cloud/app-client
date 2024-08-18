@@ -9,31 +9,18 @@ export default function Home() {
 
 
     const handleUpload = (file) => {
-        setVideoFile(file);
-
-        // const formData = new FormData();
-        // formData.append('video', file);
-
-        // axios.post('http://localhost:5000/upload', formData, {
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     }
-        // }).then(response => {
-        //     console.log('Video uploaded successfully:', response.data);
-        //     // Handle the response or trigger FFmpeg processing here
-        // }).catch(error => {
-        //     console.error('Error uploading video:', error);
-        // });
+        console.log("File displed")
     };
 
     return (
         <div className="home_page">
-            <div className="home_page_body">
-                <span className="home_title">Hello, here you can upload some videos:</span>
-                <span className="home_subtitle">subtitle</span>
-            </div>
-
-            <div className="drop_zone">
+            <h1 className='homepage_title'>
+                Choose.<br />
+                Trimm. <br />
+                Upload.<br />
+                Watch.
+            </h1>
+            <div className="drop_zone_container">
                 <UploadFile onUpload={handleUpload} />
             </div>
 
