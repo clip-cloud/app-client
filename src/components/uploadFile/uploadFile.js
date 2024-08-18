@@ -12,7 +12,7 @@ function UploadFile({ onUpload }) {
     const [trimRange, setTrimRange] = useState([0, 0]);
     const [textInput, setTextInput] = useState('');
     const [loading, setLoading] = useState(false);
-    const [showModal, setShowModal] = useState(false); 
+    const [showModal, setShowModal] = useState(false);
     const videoRef = useRef(null);
     const rangeRef = useRef(null);
 
@@ -33,6 +33,8 @@ function UploadFile({ onUpload }) {
         }
     }, [trimRange]);
 
+
+    // Drop zone handaling
     const { getRootProps, getInputProps } = useDropzone({
         accept: 'video/*',
         multiple: false,
@@ -45,15 +47,17 @@ function UploadFile({ onUpload }) {
         }, [onUpload]),
     });
 
+    // Upload video onCklick
     const handleAddVideo = async () => {
         if (!textInput) {
-            setShowModal(true); 
+            setShowModal(true);
             return;
         }
 
         setLoading(true);
 
         try {
+            // Set data
             const formData = new FormData();
             formData.append('video', file);
             formData.append('startTime', trimRange[0]);
@@ -88,6 +92,7 @@ function UploadFile({ onUpload }) {
         setTrimRange([startTime, duration]);
     };
 
+    // Set trimming
     const handleTrimChange = (e) => {
         const value = parseFloat(e.target.value);
         const name = e.target.name;
@@ -99,10 +104,12 @@ function UploadFile({ onUpload }) {
         }
     };
 
+    // Description handle
     const handleTextInput = (e) => {
         setTextInput(e.target.value);
     };
 
+    // Pop up display
     const handleModalClose = () => {
         setShowModal(false);
     };

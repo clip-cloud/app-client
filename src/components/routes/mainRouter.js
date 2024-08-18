@@ -13,7 +13,7 @@ function MainRouter() {
             <Route path='/' element={<Home />} />                   {/* Home route */}
             <Route path='/gallery' element={<Gallery />} />         {/* Gallery route */}
 
-            <Route path='/video/:id' element={<VideoProfile />} /> {/* Gallery route */}
+            <Route path='/video/:id' element={<VideoProfile />} /> {/* Video detailes route */}
         </Routes>
     )
 }

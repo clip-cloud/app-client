@@ -43,7 +43,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Container for video information */
 .video_info {
     display: flex;
     flex-direction: column;
@@ -55,7 +54,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Title and details */
 .video_title_profile {
     font-size: 1.2em;
     font-weight: bold;

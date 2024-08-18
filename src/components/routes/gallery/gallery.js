@@ -9,6 +9,7 @@ export default function Gallery() {
     const SERVER_PORT = process.env.REACT_APP_SERVICE_PORT;
 
     useEffect(() => {
+        // Get all videos to display on gallery
         const fetchData = async () => {
             try {
                 const response = await fetch(`${SERVER_PORT}/request/videos`);
@@ -23,6 +24,7 @@ export default function Gallery() {
         fetchData();
     }, [SERVER_PORT]);
 
+    // remove video from gallery
     const handleRemoveVideo = async (index) => {
         const videoToRemove = fetchVideos[index];
 
@@ -47,6 +49,7 @@ export default function Gallery() {
         }
     };
 
+    // Navigate to the video detailes page
     const handleVideoClick = (index) => {
         const videoToShow = fetchVideos[index];
         navigate('/video/' + videoToShow._id);

@@ -9,6 +9,7 @@ function VideoProfile() {
     const SERVER_PORT = process.env.REACT_APP_SERVICE_PORT;
 
     useEffect(() => {
+        // Get the info for single video
         const fetchData = async () => {
             try {
                 const response = await fetch(`${SERVER_PORT}/request/single/video/${id}`);
@@ -23,10 +24,12 @@ function VideoProfile() {
         fetchData();
     }, [SERVER_PORT, id]);
 
+    // Back to gallery button
     const handleBackToGallery = () => {
         navigate('/gallery');
     }
 
+    // Handle time uploaded
     const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString(); 
