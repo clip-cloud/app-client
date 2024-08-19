@@ -62,7 +62,11 @@
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.remove_video_button:hover,
+.remove_video_button:hover {
+    background-color: #b32a00;
+    transform: scale(1.05);
+}
+
 .profile_button:hover {
     background-color: #0056b3;
     transform: scale(1.05);
