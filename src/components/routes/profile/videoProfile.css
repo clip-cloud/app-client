@@ -37,7 +37,7 @@
 }
 
 .responsive_video_profile {
-    width: 20vw;
+    width: 300px;
     height: auto;
     border-radius: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -68,4 +68,20 @@
 .video_title_profile:nth-child(3) {
     font-size: 0.9em;
     color: #666;
+}
+
+@media (max-width: 1000px) {
+    .video_profile {
+        /* display: grid; */
+        margin-top: 50px;
+
+    }
+
+    .video_profile_container {
+        width: auto;
+        display: grid;
+        justify-content: center;
+        /* align-items: center; */
+        /* gap: 20px; */
+    }
 }
