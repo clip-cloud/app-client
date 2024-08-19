@@ -169,14 +169,21 @@
         position: relative;
         display: grid;
         width: 100%;
-        
+
         align-items: center;
         justify-content: center;
     }
-    
+
     .video_manage_container {
         position: relative;
         justify-content: center;
 
+    }
+
+    .video-container video {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 2px 6px 15px rgba(0, 0, 0, 0.3);
     }
 }

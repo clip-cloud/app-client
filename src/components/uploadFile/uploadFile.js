@@ -13,6 +13,7 @@ function UploadFile({ onUpload }) {
     const [textInput, setTextInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(''); 
     const videoRef = useRef(null);
     const rangeRef = useRef(null);
 
@@ -33,8 +34,7 @@ function UploadFile({ onUpload }) {
         }
     }, [trimRange]);
 
-
-    // Drop zone handaling
+    // Drop zone handling
     const { getRootProps, getInputProps } = useDropzone({
         accept: 'video/*',
         multiple: false,
@@ -44,10 +44,13 @@ function UploadFile({ onUpload }) {
             const file = acceptedFiles[0];
             const videoURL = URL.createObjectURL(file);
             setVideoSrc(videoURL);
+            setErrorMessage('');
         }, [onUpload]),
+        onDropRejected: () => {
+            setErrorMessage('Please upload a valid video file.'); // TODO: Display nice popup for the users
+        }
     });
 
-    // Upload video onCklick
     const handleAddVideo = async () => {
         if (!textInput) {
             setShowModal(true);
@@ -92,7 +95,6 @@ function UploadFile({ onUpload }) {
         setTrimRange([startTime, duration]);
     };
 
-    // Set trimming
     const handleTrimChange = (e) => {
         const value = parseFloat(e.target.value);
         const name = e.target.name;
@@ -104,12 +106,10 @@ function UploadFile({ onUpload }) {
         }
     };
 
-    // Description handle
     const handleTextInput = (e) => {
         setTextInput(e.target.value);
     };
 
-    // Pop up display
     const handleModalClose = () => {
         setShowModal(false);
     };
@@ -120,6 +120,7 @@ function UploadFile({ onUpload }) {
                 <div {...getRootProps()} className='drop_zone'>
                     <input {...getInputProps()} />
                     <p>Drag & drop a video here, or click to select one</p>
+                    {errorMessage && <p className="error_message">{errorMessage}</p>} {/* Display error message */}
                 </div>
             ) : (
                 <div className='video_manage_container'>

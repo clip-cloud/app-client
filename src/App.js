@@ -8,12 +8,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter basename="/">    {/* Router with optional base path */}
-        <div className='header'>
-          <a className='sticky_header'
-            href='https://github.com/clip-cloud'>
-            Welcome to Clip Cloud! Navigate to repository. -{'>'}
-          </a>
-        </div>
+
 
         <Navbar />
 

@@ -14,15 +14,25 @@ function Navbar() {
   }, [location]);
 
   return (
-    <div className="navbar">
-      <ul>
-        <li className={navBg === '/' ? "select" : ""}>
-          <Link to="/">Home</Link >
-        </li>
-        <li className={navBg.match('/gallery') ? "select" : ""}>
-          <Link to="gallery">Gallery</Link>
-        </li>
-      </ul>
+    <div className="navbar_container" >
+      <div className='header'>
+        <a className='sticky_header'
+          href='https://github.com/clip-cloud'>
+          Welcome to Clip Cloud! Navigate to repository. -{'>'}
+        </a>
+      </div>
+      
+      <div className="navbar">
+
+        <ul>
+          <li className={navBg === '/' ? "select" : ""}>
+            <Link to="/">Home</Link >
+          </li>
+          <li className={navBg.match('/gallery') ? "select" : ""}>
+            <Link to="gallery">Gallery</Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

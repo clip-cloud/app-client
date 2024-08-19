@@ -1,3 +1,7 @@
+.navbar_container {
+  
+}
+
 .navbar {
   position: fixed;
   display: flex;
@@ -8,6 +12,53 @@
   backdrop-filter: blur(15px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1;
+
+  top: 45px;
+}
+
+
+.header {
+  position: fixed;
+  background-color: black;
+  padding: 1%;
+  
+  top: 0;
+  height: fit-content;
+  width: -webkit-fill-available;
+
+  z-index: 1;
+
+}
+
+.header::before {
+  position: absolute;
+  content: " ";
+  width: 100%;
+  height: 0.8vh;
+  left: 0;
+  bottom: 0%;
+
+  background-image: linear-gradient(90deg,
+      #FF0000 0%,
+      #FF0000 10%,
+      #FF6F00 10%,
+      #FF6F00 20%,
+      #FFD700 20%,
+      #FFD700 30%,
+      #ADFF2F 30%,
+      #ADFF2F 40%,
+      #00FF00 40%,
+      #00FF00 50%,
+      #00FA9A 50%,
+      #00FA9A 60%,
+      #00bfff 60%,
+      #00BFFF 70%,
+      #1E90FF 70%,
+      #040506 80%,
+      #000000 80%,
+      #000000 90%,
+      #2c1111 90%,
+      #d3ac00 100%);
 }
 
 
