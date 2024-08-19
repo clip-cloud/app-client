@@ -48,6 +48,8 @@
         display: grid;
 
         width: fit-content;
+
+        margin-top: 15vh;
     }
 
     .drop_zone_container {
