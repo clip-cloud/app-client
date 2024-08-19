@@ -8,6 +8,8 @@
   background-color: black;
   padding: 1%;
 
+  height: fit-content;
+
 }
 
 .header::before {
@@ -48,4 +50,8 @@
 
 }
 
-
+@media (max-width: 1000px) {
+  .header {
+    height: 6vh;
+  }
+}
