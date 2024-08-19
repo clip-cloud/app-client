@@ -144,3 +144,19 @@
         transform: rotate(360deg);
     }
 }
+
+@media (max-width: 1000px) {
+    .drop_zone {
+        position: relative;
+        border: 3px dashed #ccc;
+        cursor: pointer;
+        padding: 50px;
+        border-radius: 2%;
+    
+        height: 100px;
+        width: fit-content;
+    
+        bottom: 0;
+    }
+    
+}

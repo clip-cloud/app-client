@@ -4,7 +4,7 @@
     margin-top: 10vh;
     margin-left: 35vh;
     display: flex;
-    
+
     width: fit-content;
 }
 
@@ -26,20 +26,49 @@
 
 @media (max-width: 1400px) {
     .homepage_title {
-        font-size: 4em; 
+        font-size: 4em;
     }
 }
 
 @media (max-width: 1200px) {
     .homepage_title {
         font-size: 3em;
-        text-align: center; 
+        text-align: center;
     }
 }
+
+@media (width: 1000px) {
+    .homepage_title {
+        font-size: 2em; 
+        text-align: center;
+    }
+
+    .home_page {
+        /* position: relative; */
+    
+        /* margin-top: 10vh; */
+        margin-left: 5vh;
+        /* display: flex; */
+        
+        width: fit-content;
+    }
+    
+}
+
 
 @media (max-width: 1000px) {
     .homepage_title {
         font-size: 2em; 
         text-align: center;
+    }
+
+    .home_page {
+        /* position: relative; */
+    
+        /* margin-top: 10vh; */
+        margin-left: 0;
+        display: grid;
+        
+        width: fit-content;
     }
 }

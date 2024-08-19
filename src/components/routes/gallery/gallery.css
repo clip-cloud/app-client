@@ -62,6 +62,7 @@
 .profile_button:active {
     background-color: #003d7a;
 }
+
 .empty_gallery {
     display: block;
     text-align: center;
@@ -70,4 +71,12 @@
     padding: 0%;
     margin: 0%;
     margin-top: 20vh;
+}
+
+
+@media (max-width: 1000px) {
+    .gallery_header {
+        text-align: center;
+        margin-top: 50px;
+    }
 }
