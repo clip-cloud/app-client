@@ -89,9 +89,9 @@
 .description_input {
     padding: 10px 15px;
     border: 2px solid rgba(204, 204, 204, 0.8);
-    
+
     border-radius: 10px;
-    
+
     font-size: 16px;
     outline: none;
     height: 30vh;
@@ -152,11 +152,31 @@
         cursor: pointer;
         padding: 50px;
         border-radius: 2%;
-    
+
         height: 100px;
         width: fit-content;
-    
+
         bottom: 0;
     }
+
+    .upload_file {
+        display: grid;
+        /* flex-direction: column; */
+
+    }
+
+    .video-container {
+        position: relative;
+        display: grid;
+        width: 100%;
+        
+        align-items: center;
+        justify-content: center;
+    }
     
+    .video_manage_container {
+        position: relative;
+        justify-content: center;
+
+    }
 }

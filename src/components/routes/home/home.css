@@ -37,38 +37,20 @@
     }
 }
 
-@media (width: 1000px) {
-    .homepage_title {
-        font-size: 2em; 
-        text-align: center;
-    }
-
-    .home_page {
-        /* position: relative; */
-    
-        /* margin-top: 10vh; */
-        margin-left: 5vh;
-        /* display: flex; */
-        
-        width: fit-content;
-    }
-    
-}
-
-
 @media (max-width: 1000px) {
     .homepage_title {
-        font-size: 2em; 
+        font-size: 2em;
         text-align: center;
     }
 
     .home_page {
-        /* position: relative; */
-    
-        /* margin-top: 10vh; */
         margin-left: 0;
         display: grid;
-        
+
         width: fit-content;
+    }
+
+    .drop_zone_container {
+        display: grid;
     }
 }
