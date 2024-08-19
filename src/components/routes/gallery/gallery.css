@@ -40,7 +40,6 @@
     border-radius: 4px;
 }
 
-.video_button,
 .profile_button {
     background-color: #007bff;
     color: #fff;
@@ -52,7 +51,18 @@
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.video_button:hover,
+.remove_video_button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.remove_video_button:hover,
 .profile_button:hover {
     background-color: #0056b3;
     transform: scale(1.05);

@@ -66,7 +66,7 @@ export default function Gallery() {
                                 <source src={`${SERVER_PORT}${video.filePath}`} type={video.format} />
                                 Your browser does not support the video tag.
                             </video>
-                            <button onClick={() => handleRemoveVideo(index)} className="video_button">Remove</button>
+                            <button onClick={() => handleRemoveVideo(index)} className="remove_video_button">Remove</button>
                             <button onClick={() => handleVideoClick(index)} className="profile_button">Details</button>
                         </div>
                     ))
