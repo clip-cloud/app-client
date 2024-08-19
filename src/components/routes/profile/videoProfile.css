@@ -72,7 +72,6 @@
 
 @media (max-width: 1000px) {
     .video_profile {
-        /* display: grid; */
         margin-top: 50px;
 
     }
@@ -81,7 +80,5 @@
         width: auto;
         display: grid;
         justify-content: center;
-        /* align-items: center; */
-        /* gap: 20px; */
     }
 }
