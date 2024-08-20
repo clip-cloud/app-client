@@ -40,7 +40,7 @@ function VideoProfile() {
             <button className='back_togallery' onClick={handleBackToGallery}>{'<'}- Back to Gallery</button>
             {getVideoData.filePath ? (
                 <div className='video_profile_container'>
-                    <video controls className="responsive_video_profile" >
+                    <video controls autoPlay className="responsive_video_profile" >
                         <source src={`${SERVER_PORT}${getVideoData.filePath}`} type={getVideoData.format} />
                         Your browser does not support the video tag.
                     </video>
