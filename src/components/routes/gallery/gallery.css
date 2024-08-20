@@ -91,6 +91,12 @@
 @media (max-width: 1000px) {
     .gallery_header {
         text-align: center;
-        margin-top: 110px;
+        position: relative;
+        margin: auto;
+        top: 112px;
+    }
+
+    .video_list {
+        margin-left: 0;
     }
 }
