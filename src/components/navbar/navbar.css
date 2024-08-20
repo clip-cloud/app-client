@@ -1,6 +1,4 @@
-.navbar_container {
-  
-}
+.navbar_container {}
 
 .navbar {
   position: fixed;
@@ -21,7 +19,7 @@
   position: fixed;
   background-color: black;
   padding: 1%;
-  
+
   top: 0;
   height: fit-content;
   width: -webkit-fill-available;
@@ -130,7 +128,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    width: -webkit-fill-available;
   }
 
+  .navbar li {
+    width: -webkit-fill-available;
+  }
 }
