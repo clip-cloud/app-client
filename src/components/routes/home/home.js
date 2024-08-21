@@ -5,12 +5,12 @@ import UploadFile from "../../uploadFile/uploadFile";
 import './home.css';
 
 export default function Home() {
-    const [videoFile, setVideoFile] = useState(null);
+    // const [videoFile, setVideoFile] = useState(null);
 
 
-    const handleUpload = (file) => {
-        console.log("File displed")
-    };
+    // const handleUpload = (file) => {
+    //     console.log("File displed")
+    // };
 
     return (
         <div className="home_page">
@@ -21,7 +21,7 @@ export default function Home() {
                 Watch.
             </h1>
             <div className="drop_zone_container">
-                <UploadFile onUpload={handleUpload} />
+                <UploadFile />
             </div>
 
         </div>

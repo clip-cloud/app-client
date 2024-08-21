@@ -21,7 +21,7 @@ function Navbar() {
           Welcome to Clip Cloud! Navigate to repository. -{'>'}
         </a>
       </div>
-      
+
       <div className="navbar">
 
         <ul>

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Modal from '../modal/modal';
 import './uploadFile.css';
 
-function UploadFile({ onUpload }) {
+function UploadFile() {
     const [videoSrc, setVideoSrc] = useState(null);
     const [file, setFile] = useState(null);
     const [startTime, setStartTime] = useState(0);
@@ -13,11 +13,50 @@ function UploadFile({ onUpload }) {
     const [textInput, setTextInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(''); 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const videoRef = useRef(null);
     const rangeRef = useRef(null);
 
     const API_BASE_URL = process.env.REACT_APP_SERVICE_PORT;
+
+    const onDrop = useCallback((acceptedFiles) => {
+        console.log("counter! ");
+
+        const file = acceptedFiles[0];
+        setFile(file);
+        let reader = new FileReader(); // This method is asynchronously read the contents 
+        reader.readAsDataURL(file);
+
+        reader.onprogress = () => {
+            setLoading(true);
+            console.log("loading...")
+        }
+
+        // setVideoSrc(reader.result);
+        reader.onloadend = () => {
+            setLoading(false);
+            // console.log("reader.result ", reader.result);
+            setVideoSrc(reader.result); // Use the base64-encoded string
+        };
+
+        setErrorMessage('');
+    }, []);
+
+    const onDropRejected = () => {
+        setErrorMessage('Please upload a valid video file.');
+    };
+
+    // Drop zone handling
+    const { getRootProps, getInputProps, isDragAccept, acceptedFiles } = useDropzone({
+        accept: 'video/*',
+        multiple: false,
+        maxFiles: 1,
+        onDrop,
+        onDropRejected,
+    });
+
+
 
     useEffect(() => {
         if (videoRef.current) {
@@ -26,30 +65,12 @@ function UploadFile({ onUpload }) {
             video.ontimeupdate = () => {
                 if (video.currentTime > trimRange[1]) {
                     video.currentTime = trimRange[0];
-                }
-                if (rangeRef.current) {
-                    rangeRef.current.value = video.currentTime;
+                    console.log("video.currentTime: ", video.currentTime);
                 }
             };
         }
-    }, [trimRange]);
 
-    // Drop zone handling
-    const { getRootProps, getInputProps } = useDropzone({
-        accept: 'video/*',
-        multiple: false,
-        onDrop: useCallback((acceptedFiles) => {
-            onUpload(acceptedFiles[0]);
-            setFile(acceptedFiles[0]);
-            const file = acceptedFiles[0];
-            const videoURL = URL.createObjectURL(file);
-            setVideoSrc(videoURL);
-            setErrorMessage('');
-        }, [onUpload]),
-        onDropRejected: () => {
-            setErrorMessage('Please upload a valid video file.'); // TODO: Display nice popup for the users
-        }
-    });
+    }, [trimRange]);
 
     const handleAddVideo = async () => {
         if (!textInput) {
@@ -60,7 +81,6 @@ function UploadFile({ onUpload }) {
         setLoading(true);
 
         try {
-            // Set data
             const formData = new FormData();
             formData.append('video', file);
             formData.append('startTime', trimRange[0]);
@@ -69,8 +89,8 @@ function UploadFile({ onUpload }) {
 
             const response = await axios.post(`${API_BASE_URL}/upload`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                    'Content-Type': 'multipart/form-data',
+                },
             });
 
             if (response.status === 200) {
@@ -98,6 +118,7 @@ function UploadFile({ onUpload }) {
     const handleTrimChange = (e) => {
         const value = parseFloat(e.target.value);
         const name = e.target.name;
+        console.log("name): ", name)
 
         if (name === 'start') {
             setTrimRange([Math.min(value, trimRange[1]), trimRange[1]]);
@@ -116,14 +137,22 @@ function UploadFile({ onUpload }) {
 
     return (
         <div className='upload_file'>
-            {!videoSrc ? (
+            {/* Display changing over drag file */}
+            {isDragAccept ? (<div {...getRootProps()} className='drop_zone'>
+                <input {...getInputProps()} />
+                <p>Drop a video here...</p>
+                {errorMessage && <p className="error_message">{errorMessage}</p>}
+
+
+                {/* Display ensures the file is correctly uploaded */}
+            </div>) : (!videoSrc ? (
                 <div {...getRootProps()} className='drop_zone'>
                     <input {...getInputProps()} />
                     <p>Drag & drop a video here, or click to select one</p>
-                    {errorMessage && <p className="error_message">{errorMessage}</p>} {/* Display error message */}
+                    {errorMessage && <p className="error_message">{errorMessage}</p>}
                 </div>
             ) : (
-                <div className='video_manage_container'>
+                <div className='video_manage_container'>     {/* Display changing over video file settings */}
                     <span className='file_name'>{file?.name}</span>
                     <div className="video-container">
                         <video ref={videoRef} onLoadedMetadata={handleMetaData} controls width="100%" height="500" autoPlay loop>
@@ -177,7 +206,7 @@ function UploadFile({ onUpload }) {
                         </div>
                     </div>
                 </div>
-            )}
+            ))}
             {loading && <div className="loading_spinner">Loading...</div>}
             {showModal && (
                 <Modal

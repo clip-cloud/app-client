@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import './gallery.css';
+import axios from "axios";
 
 export default function Gallery() {
     const [fetchVideos, setFetchVideos] = useState([]);
+    const [playingIndex, setPlayingIndex] = useState(null);
+
+    const videoRefs = useRef([]);
     const navigate = useNavigate();
 
     const SERVER_PORT = process.env.REACT_APP_SERVICE_PORT;
@@ -12,10 +16,9 @@ export default function Gallery() {
         // Get all videos to display on gallery
         const fetchData = async () => {
             try {
-                const response = await fetch(`${SERVER_PORT}/request/videos`);
-                const data = await response.json();
-                setFetchVideos(data);
-                console.log(data);
+                const response = await axios.get(`${SERVER_PORT}/request/videos`);
+                setFetchVideos(response.data);
+                console.log("Fetching video for gallery...");
             } catch (error) {
                 console.error('Error fetching videos:', error);
             }
@@ -24,23 +27,90 @@ export default function Gallery() {
         fetchData();
     }, [SERVER_PORT]);
 
-    // remove video from gallery
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            let firstVideoInView = null;
+
+            entries.forEach(entry => {
+                const video = entry.target;
+                if (entry.isIntersecting && video.readyState >= 3) {
+                    if (!firstVideoInView) {
+                        firstVideoInView = video;
+                    }
+                }
+            });
+
+            // Inssuer that not all the videos will play together while scrolling
+            videoRefs.current.forEach(video => {
+                if (video && video !== firstVideoInView) {
+                    video.pause();
+                }
+            });
+
+            // Play the first video in view
+            if (firstVideoInView && firstVideoInView !== videoRefs.current[playingIndex]) {
+                firstVideoInView.play().catch(error => {
+                    console.log('Autoplay was prevented:', error);
+                });
+                setPlayingIndex(videoRefs.current.indexOf(firstVideoInView));
+            }
+        }, {
+            threshold: 0.9
+        });
+
+        videoRefs.current.forEach(video => {
+            if (video) {
+                observer.observe(video);
+            }
+        });
+
+        // TODO: clearify if this functions is nessacry due to eventLister handle
+        // return () => {
+        //     videoRefs.current.forEach(video => {
+        //         if (video) {
+        //             observer.unobserve(video);
+        //         }
+        //     });
+        // };
+
+    }, [fetchVideos, playingIndex]);
+
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+
+            if (document.visibilityState === 'hidden') {
+                // Pause all videos if the page is not visible
+                videoRefs.current.forEach(video => {
+                    if (video) {
+                        video.pause();
+                    }
+                });
+            }
+        };
+
+        // Triggered when the visibility changed -- visibilitychange refers to site view
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+        };
+    }, []);
+
+    // Remove video from gallery
     const handleRemoveVideo = async (index) => {
         const videoToRemove = fetchVideos[index];
 
         try {
-            const response = await fetch(`${SERVER_PORT}/request/video/${videoToRemove._id}`, {
-                method: 'DELETE',
+            const response = await axios.delete(`${SERVER_PORT}/request/video/${videoToRemove._id}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
 
-            if (response.ok) {
-                // Remove the video from the state
+            if (response.status === 200) {
+                // Remove the video from the state display
                 const updatedVideos = fetchVideos.filter((_, i) => i !== index);
                 setFetchVideos(updatedVideos);
-                console.log(fetchVideos);
             } else {
                 console.error('Failed to remove video:', response.statusText);
             }
@@ -49,7 +119,7 @@ export default function Gallery() {
         }
     };
 
-    // Navigate to the video detailes page
+    // Navigate to the video details page
     const handleVideoClick = (index) => {
         const videoToShow = fetchVideos[index];
         navigate('/video/' + videoToShow._id);
@@ -62,7 +132,12 @@ export default function Gallery() {
                 {fetchVideos.length > 0 ? (
                     fetchVideos.map((video, index) => (
                         <div className="video_container" key={video._id}>
-                            <video controls className="responsive-video">
+                            <video
+                                ref={el => videoRefs.current[index] = el}
+                                controls
+                                loop
+                                className="responsive-video"
+                            >
                                 <source src={`${SERVER_PORT}${video.filePath}`} type={video.format} />
                                 Your browser does not support the video tag.
                             </video>
