@@ -130,10 +130,10 @@ export default function Gallery() {
             <span className="gallery_title">Clips Gallery</span>
             <div className="video_list">
                 {fetchVideos.length > 0 ? (
-                    fetchVideos.map((video, index) => (
+                    fetchVideos.slice().reverse().map((video, index) => (
                         <div className="video_container" key={video._id}>
                             <video
-                                ref={el => videoRefs.current[index] = el}
+                                ref={el => videoRefs.current[fetchVideos.length - 1 - index] = el} // Adjust the index for reversed order
                                 controls
                                 loop
                                 className="responsive-video"
@@ -141,8 +141,8 @@ export default function Gallery() {
                                 <source src={`${SERVER_PORT}${video.filePath}`} type={video.format} />
                                 Your browser does not support the video tag.
                             </video>
-                            <button onClick={() => handleRemoveVideo(index)} className="remove_video_button">Remove</button>
-                            <button onClick={() => handleVideoClick(index)} className="profile_button">Details</button>
+                            <button onClick={() => handleRemoveVideo(fetchVideos.length - 1 - index)} className="remove_video_button">Remove</button>
+                            <button onClick={() => handleVideoClick(fetchVideos.length - 1 - index)} className="profile_button">Details</button>
                         </div>
                     ))
                 ) : (
