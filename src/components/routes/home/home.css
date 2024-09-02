@@ -7,8 +7,9 @@
 
     width: fit-content;
 }
+
 .homepage_title {
-    display: flex;
+    /* display: flex; */
 
     margin-inline: 3vw;
     text-align: left;
@@ -18,7 +19,7 @@
     font-weight: 700;
     line-height: 1;
 
-    animation: slideIn 1.5s forwards;
+    animation: slideUp 1.5s forwards;
 
 }
 
@@ -27,14 +28,26 @@
     text-align: left;
 }
 
-@keyframes slideIn {
+@keyframes slideUp {
     from {
-       transform: translateY(100%);
-       opacity: 0;
+        transform: translateY(100%);
+        opacity: 0;
     }
-    
+
     to {
         transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-30%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
         opacity: 1;
     }
 }
@@ -57,6 +70,7 @@
     .homepage_title {
         font-size: 2em;
         text-align: center;
+        animation: slideIn 1.5s forwards;
     }
 
     .home_page {
