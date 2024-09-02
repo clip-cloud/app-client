@@ -7,8 +7,9 @@
 
     width: fit-content;
 }
-
 .homepage_title {
+    display: flex;
+
     margin-inline: 3vw;
     text-align: left;
     margin-top: 0;
@@ -16,11 +17,26 @@
     font-size: 4.8em;
     font-weight: 700;
     line-height: 1;
+
+    animation: slideIn 1.5s forwards;
+
 }
 
 .home_page_body {
     display: grid;
     text-align: left;
+}
+
+@keyframes slideIn {
+    from {
+       transform: translateY(100%);
+       opacity: 0;
+    }
+    
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 
