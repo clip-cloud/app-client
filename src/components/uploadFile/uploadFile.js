@@ -7,13 +7,13 @@ import './uploadFile.css';
 function UploadFile() {
     const [videoSrc, setVideoSrc] = useState(null);
     const [file, setFile] = useState(null);
-    const [startTime, setStartTime] = useState(0);
     const [endTime, setEndTime] = useState(0);
     const [trimRange, setTrimRange] = useState([0, 0]);
     const [textInput, setTextInput] = useState('');
     const [loading, setLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
+    const startTime = 0;
 
     const videoRef = useRef(null);
     // const rangeRef = useRef(null);
