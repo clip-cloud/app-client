@@ -16,7 +16,7 @@ function UploadFile() {
     const [errorMessage, setErrorMessage] = useState('');
 
     const videoRef = useRef(null);
-    const rangeRef = useRef(null);
+    // const rangeRef = useRef(null);
 
     const API_BASE_URL = process.env.REACT_APP_SERVICE_PORT;
 
@@ -48,7 +48,7 @@ function UploadFile() {
     };
 
     // Drop zone handling
-    const { getRootProps, getInputProps, isDragAccept, acceptedFiles } = useDropzone({
+    const { getRootProps, getInputProps, isDragAccept } = useDropzone({
         accept: 'video/*',
         multiple: false,
         maxFiles: 1,
